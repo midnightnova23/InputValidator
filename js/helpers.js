@@ -3,20 +3,19 @@
  */
 $(document).ready(function() {
 
-    //Watch for change events on any
-    // input element with data-rule attribute
-    $('input[data-rule]').change(function(){
+    //Watch for change events on any input element
+    //with either a data-rule or required attribute
+    $('input[data-rule], input[required]').change(function(){
+        console.log(this);
         validateInput(this);
-
-        if(errorCount()>0) {
-            $('#submit').addClass('btn-danger');
-        } else {
-            $('#submit').removeClass('btn-danger').addClass('btn-success');
-        }
+    });
+    $('input[data-rule], input[required]').blur(function(){
+        console.log(this);
+        validateInput(this);
     });
 
     $('#submit').click(function (event) {
-        if(errorCount()>0) {
+        if(scanForErrors()>0) {
             alert('There are errors on the form!')
             event.preventDefault();
         }
@@ -24,34 +23,48 @@ $(document).ready(function() {
 });
 
 function validateInput(obj) {
-
     //Create Regular Expression from attribute
-    expr = new RegExp($(obj).attr('data-rule'));
+    var expr = new RegExp($(obj).attr('data-rule'));
+    var $div = $(obj).parent('div.form-group');
 
     //for debugging
     console.log(expr + ' for value: ' + obj.value + ' => ' + expr.test(obj.value));
 
-    //Check value against rule
-    if (expr.test(obj.value)) {
-        $(obj).parent('div.form-group')
-            .removeClass('has-error')
-            .addClass('has-success');
-        return true;
-
+    //Has a value?
+    if (obj.value != "") {
+        //Check the value against rule
+        if (!expr.test(obj.value)) {
+            applyErrorStyles($div);
+        } else {
+            clearErrorStyles($div);
+        }
+    } else if (obj.required) {
+        applyErrorStyles($div);
     } else {
-        $(obj).parent('div.form-group')
-            .removeClass('has-success')
-            .addClass('has-error');
-        return false;
+        clearErrorStyles($div);
     }
+    scanForErrors();
 }
 
-function errorCount() {
+function applyErrorStyles(elm) {
+    elm.removeClass('has-success').addClass('has-error');
+}
+function clearErrorStyles(elm) {
+    elm.removeClass('has-error').addClass('has-success');
+}
+
+function scanForErrors() {
     var errors = 0;
-    $('input[data-rule]').each(function( index ){
+    $('input[data-rule], input[required]').each(function( index ){
         if ($(this).parent('div.form-group').hasClass('has-error')) {
             errors++;
         }
     });
+
+    if(errors > 0) {
+        $('#submit').addClass('btn-danger');
+    } else {
+        $('#submit').removeClass('btn-danger').addClass('btn-success');
+    }
     return errors;
 }
