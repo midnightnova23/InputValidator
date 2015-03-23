@@ -6,15 +6,13 @@ $(document).ready(function() {
     //Watch for change events on any input element
     //with either a data-rule or required attribute
     $('input[data-rule], input[required]').change(function(){
-        console.log(this);
         validateInput(this);
     });
     $('input[data-rule], input[required]').blur(function(){
-        console.log(this);
         validateInput(this);
     });
 
-    $('#submit').click(function (event) {
+    $('[type=submit]').click(function (event) {
         if(scanForErrors()>0) {
             alert('There are errors on the form!')
             event.preventDefault();
@@ -54,17 +52,17 @@ function clearErrorStyles(elm) {
 }
 
 function scanForErrors() {
-    var errors = 0;
+    var errorCount = 0;
     $('input[data-rule], input[required]').each(function( index ){
         if ($(this).parent('div.form-group').hasClass('has-error')) {
-            errors++;
+            errorCount++;
         }
     });
 
-    if(errors > 0) {
+    if(errorCount > 0) {
         $('#submit').addClass('btn-danger');
     } else {
         $('#submit').removeClass('btn-danger').addClass('btn-success');
     }
-    return errors;
+    return errorCount;
 }
