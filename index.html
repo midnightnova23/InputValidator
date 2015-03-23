@@ -28,6 +28,54 @@
                 <span class="help-block text-right">Invalid examples: John123 or Paul_Harris</span>
             </div>
             <div class="form-group">
+                <label class="control-label" for="firstName">Last Name</label>
+                <input type="text" class="form-control"
+                       data-rule="^[a-zA-Z,.]{2,20}$"
+                       id="lastName" placeholder="Smith"
+                       required>
+                <span class="help-block text-right">Invalid examples: Smith123 or Paul_Harris</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="phone">Phone</label>
+                <input type="text" class="form-control"
+                       data-rule="\+?\(?\d{2,4}\)?[\d\s-]{3,}"
+                       id="phone" placeholder="123-123-1234"
+                       required>
+                <span class="help-block text-right">Invalid examples: aaa-aaa-aaaa or 123a</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="email">E-mail</label>
+                <input type="text" class="form-control"
+                       data-rule="[a-zA-Z0-9_\.\+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-\.]+"
+                       id="email" placeholder="smith@example.com"
+                       required>
+                <span class="help-block text-right">Invalid examples: smith@bad_email.com or @example.com</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="street">Street</label>
+                <input type="text" class="form-control"
+                       data-rule="^[0-9]{1,10} [a-zA-Z., ]{2,20}$"
+                       id="city" placeholder="San Francisco"
+                       required>
+                <span class="help-block text-right">Invalid examples: 123Church or Gough 34</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="city">City</label>
+                <input type="text" class="form-control"
+                       data-rule="^[a-zA-Z ]{2,20}$"
+                       id="city" placeholder="San Francisco"
+                       required>
+                <span class="help-block text-right">Invalid examples: SF123 or San_Francisco</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="city">State</label>
+                <input type="text" class="form-control"
+                       data-rule="^[a-zA-Z]{2,30}$"
+                       id="state" placeholder="CA"
+                       required>
+                <span class="help-block text-right">Invalid examples: CA123</span>
+            </div>
+            <div class="form-group">
                 <label class="control-label" for="zipCode">Zip Code</label>
                 <input type="text" class="form-control"
                        data-rule="^\d{5}(-\d{4})?$"
