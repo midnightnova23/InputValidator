@@ -4,7 +4,7 @@
 $(document).ready(function() {
 
     $sub    = $('[type=submit]');
-    $inputs = $('input[data-rule], input[required]');
+    $inputs = $('input[data-rule], input[required], select[required]');
 
     //Watch for change events on any input element
     //with either a data-rule or required attribute
