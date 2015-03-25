@@ -71,7 +71,10 @@ function scanForErrors() {
 
 function applyErrorStyles($elm) {
     $elm.removeClass('has-success').addClass('has-error');
+    $('.has-error').children('span').removeClass('hidden');
 }
 function clearErrorStyles($elm) {
     $elm.removeClass('has-error').addClass('has-success');
+    $('.has-success').children('span').addClass('hidden');
+
 }

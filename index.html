@@ -25,7 +25,7 @@
                        data-rule="^[a-zA-Z,.]{2,20}$"
                        id="firstName" placeholder="John"
                        required>
-                <span class="help-block text-right">Invalid examples: John123 or Paul_Harris</span>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-6">
                 <label class="control-label" for="firstName">Last Name</label>
@@ -33,7 +33,7 @@
                        data-rule="^[a-zA-Z,.]{2,20}$"
                        id="lastName" placeholder="Smith"
                        required>
-                <span class="help-block text-right">Invalid examples: Smith123 or Paul_Harris</span>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label" for="phone">Phone</label>
@@ -41,7 +41,7 @@
                        data-rule="\+?\(?\d{2,4}\)?[\d\s-]{3,}"
                        id="phone" placeholder="123-123-1234"
                        required>
-                <span class="help-block text-right">Invalid examples: aaa-aaa-aaaa or 123a</span>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label" for="email">E-mail</label>
@@ -49,7 +49,7 @@
                        data-rule="[a-zA-Z0-9_\.\+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-\.]+"
                        id="email" placeholder="smith@example.com"
                        required>
-                <span class="help-block text-right">Invalid examples: smith@bad_email.com or @example.com</span>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-12">
                 <label class="control-label" for="street">Street</label>
@@ -57,7 +57,7 @@
                        data-rule="^[0-9]{1,10} [a-zA-Z., ]{2,20}$"
                        id="city" placeholder="San Francisco"
                        required>
-                <span class="help-block text-right">Invalid examples: 123Church or Gough 34</span>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-7">
                 <label class="control-label" for="city">City</label>
@@ -65,11 +65,12 @@
                        data-rule="^[a-zA-Z ]{2,20}$"
                        id="city" placeholder="San Francisco"
                        required>
-                <span class="help-block text-right">Invalid examples: SF123 or San_Francisco</span>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-2">
                 <label class="control-label" for="state">State: <span>*</span></label><br/>
                 <select name="state" class="form-control" id="state" required>
+                    <option value=""></option>
                     <option value="AL">AL</option>
                     <option value="AK">AK</option>
                     <option value="AZ">AZ</option>
@@ -122,13 +123,14 @@
                     <option value="WI">WI</option>
                     <option value="WY">WY</option>
                 </select>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-3">
                 <label class="control-label" for="zipCode">Zip Code</label>
                 <input type="text" class="form-control"
                        data-rule="^\d{5}(-\d{4})?$"
                        id="zipCode" placeholder="94102">
-                <span class="help-block text-right">Valid examples: 94102 or 94102-2256</span>
+                <span class="help-block text-right hidden">Please fill out this field with an appropriate entry.</span>
             </div>
             <div class="form-group col-md-12">
                 <button type="submit" id="submit" class="btn btn-default pull-right">Submit</button>
